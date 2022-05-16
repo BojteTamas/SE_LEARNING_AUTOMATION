@@ -1,5 +1,6 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -7,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.List;
+import java.util.Objects;
 
 public class RalucaTest {
 
@@ -90,14 +92,40 @@ public class RalucaTest {
 
         for (WebElement webElement : listaProduse) {
             colorTheElementInRed(webElement);
-            waitSomeTime(1);
         }
+        waitSomeTime(1);
+
 
         for (int i = 0; i < listaProduse.size(); i++) {
             colorTheElement(listaProduse.get(i), "blue");
             waitSomeTime(1);
         }
     }
+
+    @Test
+    public void thirdTest(){
+
+
+        List<WebElement> listaProduse1 =
+                chromeDriver.findElements(By.cssSelector("#footer > span > ul:nth-child(2) li"));
+
+        for (WebElement webElement : listaProduse1) {
+            colorTheElementInRed(webElement);
+            if (webElement.getText().equals("The Resident")) {
+                webElement.click();
+                break;
+            }
+        }
+
+        WebElement pageTiTle = chromeDriver.findElement(By.cssSelector("#show_banner > div.title > h1 > a"));
+        Assertions.assertTrue(pageTiTle.isDisplayed());
+        Assertions.assertEquals("Exclusives",pageTiTle.getText());
+
+
+    }
+
+
+
 
 
 
