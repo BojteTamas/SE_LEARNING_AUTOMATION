@@ -19,7 +19,7 @@ public class RalucaTest {
     public static void setup() {
         WebDriverManager.chromedriver().setup();
         chromeDriver = new ChromeDriver();
-        chromeDriver.get("https://www.tvfanatic.com/");
+        chromeDriver.get("https://testautomationu.applitools.com/");
     }
 
     @AfterAll
@@ -30,98 +30,72 @@ public class RalucaTest {
     @Test
     public void firstTest() {
 
-        WebElement consentbutton =
-                chromeDriver.findElement(By.cssSelector("body > div:nth-child(4) > div > div")); // consent form
-        consentbutton.click();
+        WebElement enrollbutton =
+            chromeDriver.findElement(By.cssSelector("#app > div.theme-container.no-sidebar > header > div.links > div > div:nth-child(1) > div > a:nth-child(1)"));
+        colorTheElementInRed(enrollbutton);
+        waitSomeTime(1);
+        enrollbutton.click();
+        waitSomeTime(1);
 
-        waitSomeTime(2);
-
-        WebElement acceptconsent =
-                chromeDriver.findElement(By.cssSelector("body > div:nth-child(4) > div > div > div.sc-crHmcD.fAEZdU > div > div.sc-pVTFL.kqpfpj")); // accept consent
-        acceptconsent.click();
-
-        waitSomeTime(2);
-
-        WebElement accountbutton =
-                chromeDriver.findElement(By.cssSelector("#navbar > div.navbar-header > div:nth-child(2) > button > i")); //account button
-        accountbutton.click();
-        waitSomeTime(2);
-
-
-
-        WebElement loginButton =
-                chromeDriver.findElement(By.cssSelector("#navbar > div.navbar-header > div.dropdown.navbar-button.open > ul > li > a")); // login button
-        loginButton.click();
-
-        waitSomeTime(2);
-
-        WebElement emailInput =
-                chromeDriver.findElement(By.cssSelector("#user_email")); // input email
-        emailInput.sendKeys("ceva@ceva.com");
-
-        waitSomeTime(2);
-
-        WebElement passwInput =
-                chromeDriver.findElement(By.cssSelector("#user_password")); // input password
-        passwInput.sendKeys("ParolaMea");
-
-        waitSomeTime(2);
-
-        WebElement continueButton =
-                chromeDriver.findElement(By.cssSelector("#new_user > div.panel-footer > div.pull-right > input")); // signIn button
-        colorTheElementInRed(continueButton); // coloreaza
-        waitSomeTime(2);
-        continueButton.click();
-
-        waitSomeTime(6);
-
+        WebElement loginbutton =
+            chromeDriver.findElement(By.cssSelector("#firebaseui-auth-container > div > div.firebaseui-card-content > form > ul > li:nth-child(2) > button > span.firebaseui-idp-text.firebaseui-idp-text-long"));
+        colorTheElementInRed(loginbutton);
+        waitSomeTime(1);
+        loginbutton.click();
+        waitSomeTime(1);
     }
 
     @Test
     public void secondTest() {
 
-        WebElement menubutton =
-                chromeDriver.findElement(By.cssSelector("#navbar > div.navbar-header > button > i")); // menu button
-        colorTheElementInRed(menubutton); //coloreaza
+        WebElement emailInput =
+                chromeDriver.findElement(By.cssSelector("#firebaseui-auth-container > div > form > div.firebaseui-card-content > div > div.firebaseui-textfield.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.is-upgraded > input")); // input email
+        colorTheElementInRed(emailInput);
+        emailInput.sendKeys("raluca.ion@hotmail.com");
         waitSomeTime(2);
-        menubutton.click();
 
-        waitSomeTime(2);
-        List<WebElement> listaProduse =
-                chromeDriver.findElements(By.cssSelector("ul[class='nav navbar-nav'] li"));
+        WebElement nextbutton =
+                chromeDriver.findElement(By.cssSelector("#firebaseui-auth-container > div > form > div.firebaseui-card-actions > div > button.firebaseui-id-submit.firebaseui-button.mdl-button.mdl-js-button.mdl-button--raised.mdl-button--colored"));
+        colorTheElementInRed(nextbutton);
+        nextbutton.click();
+        waitSomeTime(1);
 
-        for (WebElement webElement : listaProduse) {
-            colorTheElementInRed(webElement);
-        }
+        WebElement passInput =
+                chromeDriver.findElement(By.cssSelector("#firebaseui-auth-container > div > form > div.firebaseui-card-content > div:nth-child(3) > input"));
+        colorTheElementInRed(passInput);
+        passInput.sendKeys("Hell0There!");
+        waitSomeTime(1);
+
+        WebElement savebutton =
+                chromeDriver.findElement(By.cssSelector("#firebaseui-auth-container > div > form > div.firebaseui-card-actions > div.firebaseui-form-actions > button"));
+        colorTheElementInRed(savebutton);
+        savebutton.click();
         waitSomeTime(1);
 
 
-        for (int i = 0; i < listaProduse.size(); i++) {
-            colorTheElement(listaProduse.get(i), "blue");
-            waitSomeTime(1);
-        }
     }
+
 
     @Test
     public void thirdTest(){
+       /** WebDriverManager.chromedriver().setup();
+        chromeDriver = new ChromeDriver();
+        **/
+        //chromeDriver.get("https://testautomationu.applitools.com/");
 
+       // chromeDriver.navigate().refresh();
+        chromeDriver.get(chromeDriver.getCurrentUrl());
+        waitSomeTime(6);
 
-        List<WebElement> listaProduse1 =
-                chromeDriver.findElements(By.cssSelector("#footer > span > ul:nth-child(2) li"));
+    }
 
-        for (WebElement webElement : listaProduse1) {
-            colorTheElementInRed(webElement);
-            if (webElement.getText().equals("The Resident")) {
-                webElement.click();
-                break;
-            }
-        }
-
-        WebElement pageTiTle = chromeDriver.findElement(By.cssSelector("#show_banner > div.title > h1 > a"));
-        Assertions.assertTrue(pageTiTle.isDisplayed());
-        Assertions.assertEquals("Exclusives",pageTiTle.getText());
-
-
+    @Test
+    public void forthTest(){
+        WebElement profilebutton =
+                chromeDriver.findElement(By.cssSelector("#app > div.theme-container.no-sidebar > header > div.links > div > div:nth-child(1) > div:nth-child(2) > a:nth-child(1)"));
+        colorTheElementInRed(profilebutton);
+        profilebutton.click();
+        waitSomeTime(1);
     }
 
 
@@ -147,12 +121,6 @@ public class RalucaTest {
         chromeDriver.executeScript(
                 String.format("arguments[0].style.border='3px solid %s'", color), webElement);
     }
-
-
-
-
-
-
 
 
 }
