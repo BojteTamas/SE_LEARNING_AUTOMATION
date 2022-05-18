@@ -43,6 +43,10 @@ public class RalucaTest {
         waitSomeTime(1);
         loginbutton.click();
         waitSomeTime(1);
+
+    //    chromeDriver.navigate().refresh();
+     //   waitSomeTime(2);
+
     }
 
     @Test
@@ -72,6 +76,10 @@ public class RalucaTest {
         savebutton.click();
         waitSomeTime(1);
 
+        chromeDriver.navigate().refresh();
+        waitSomeTime(2);
+
+
 
     }
 
@@ -83,9 +91,13 @@ public class RalucaTest {
         **/
         //chromeDriver.get("https://testautomationu.applitools.com/");
 
-       // chromeDriver.navigate().refresh();
-        chromeDriver.get(chromeDriver.getCurrentUrl());
-        waitSomeTime(6);
+
+     //   chromeDriver.get(chromeDriver.getCurrentUrl());
+     //   waitSomeTime(2);
+        chromeDriver.navigate().refresh();
+        waitSomeTime(2);
+     //   chromeDriver.navigate().refresh();
+      //  waitSomeTime(2);
 
     }
 
@@ -95,9 +107,29 @@ public class RalucaTest {
                 chromeDriver.findElement(By.cssSelector("#app > div.theme-container.no-sidebar > header > div.links > div > div:nth-child(1) > div:nth-child(2) > a:nth-child(1)"));
         colorTheElementInRed(profilebutton);
         profilebutton.click();
+        waitSomeTime(3);
+     /**   profilebutton.click();
         waitSomeTime(1);
+        profilebutton.click();
+        waitSomeTime(1);
+      **/
+
+      chromeDriver.navigate().refresh();
+      waitSomeTime(1);
     }
 
+
+    @Test
+    public void fifthTest(){
+
+
+        WebElement editprofbutton =
+                chromeDriver.findElement(By.cssSelector("#app > div.theme-container.no-sidebar > div.page > div.page-edit"));
+                colorTheElementInPurple(editprofbutton);
+                editprofbutton.click();
+                waitSomeTime(2);
+                //
+    }
 
 
 
@@ -114,6 +146,10 @@ public class RalucaTest {
     public void colorTheElementInRed(final WebElement webElement) {
 
         chromeDriver.executeScript("arguments[0].style.border='3px solid red'", webElement);
+    }
+
+    public void colorTheElementInPurple(final WebElement webElement){
+        chromeDriver.executeScript("arguments[0].style.border='3px solid rgb(255, 255, 255)'", webElement);
     }
 
     public void colorTheElement(final WebElement webElement, String color) {
