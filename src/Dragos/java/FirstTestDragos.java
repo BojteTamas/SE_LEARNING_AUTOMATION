@@ -6,17 +6,18 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 
 import java.util.List;
 
-public class FirstTest {
+public class FirstTestDragos {
   static ChromeDriver chromeDriver;
 
   @BeforeAll
   public static void setup() {
     WebDriverManager.chromedriver().setup();
     chromeDriver = new ChromeDriver();
-    chromeDriver.get("https://www.emag.ro/");
+    chromeDriver.get("https://www.evomag.ro/");
   }
 
   @AfterAll
@@ -27,15 +28,20 @@ public class FirstTest {
   @Test
   public void firstTest() {
 
-    WebElement loginButton =
-        chromeDriver.findElement(By.cssSelector("#my_account > i")); // asa gasim un element
-    loginButton.click();
-
+    WebElement loginButtonHover =
+        chromeDriver.findElement(By.cssSelector("#personal_header > .account_header > .c_header")); // asa gasim un element
+    WebElement loginButtonClick =
+            chromeDriver.findElement(By.cssSelector(".BtnLoginHead"));
+    Actions action = new Actions(chromeDriver);
+    action.moveToElement(loginButtonHover).moveToElement(loginButtonClick).click().perform();
     waitSomeTime(2);
 
+//aici am ramas
     WebElement emailInput =
         chromeDriver.findElement(By.cssSelector("#user_login_email")); // asa gasim un element
     emailInput.sendKeys("ceva@ceva.com");
+
+
 
     waitSomeTime(2);
 
