@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.w3c.dom.html.HTMLInputElement;
 
 import java.util.List;
@@ -17,7 +18,7 @@ public class MariaTest {
     public static void setup() {
         WebDriverManager.chromedriver().setup();
         chromeDriver = new ChromeDriver();
-        chromeDriver.get("https://www.nike.com/ro/");
+        chromeDriver.get("https://www.w3schools.com/");
     }
 
     @AfterAll
@@ -28,11 +29,11 @@ public class MariaTest {
     @Test
     public void firstTest() {
 
-        WebElement loginButton = chromeDriver.findElement(
-                By.cssSelector("#HeaderBeginning > .pre-desktop-usermenu d-sm-h d-md-flx flx-dir-md-r  > . loginBtn > .nav-btn p0-sm d-sm-b body-4 u-bold ml2-sm mr2-sm")); // asa gasim un element
-        //waitSomeTime(20);
-
+     WebElement loginButton =
+                chromeDriver.findElement(By.cssSelector("#w3loginbtn")); // asa gasim un element
+        //waitSomeTime(10);
         loginButton.click();
+//having issues by passing by cache & cookies
 
         waitSomeTime(2);
 
