@@ -28,6 +28,7 @@ public class CarmenTest {
 
     }
 
+
     @Test
     public void firstTest() {
 
@@ -49,30 +50,23 @@ public class CarmenTest {
 
         waitSomeTime(2);
 
-
-
-
-
     }
 
 
 
-
-
-
-
-    /*
       @Test
       public void secondTest() {
 
           WebElement menuButton =
              chromeDriver.findElement(By.cssSelector("#whiteMenu > div > div > ul:nth-child(2) > li:nth-child(3) > div.bsd-open-subcat-content > a")); // asa gasim un element
           menuButton.click();
-          waitSomeTime(2);
+          waitSomeTime(3);
 
         List<WebElement> listaProduse =
-          //  chromeDriver.findElements(By.cssSelector("#whiteMenu > div > div > ul:nth-child(2) > li:nth-child(3) > div.bsd-menu-desktop-subcat-content > div.bsd-menu-sub-links > ul > li:nth-child(1) > a"));
-          chromeDriver.findElements(By.cssSelector("#whiteMenu > div > div > ul:nth-child(2)"));
+              //  chromeDriver.findElements(By.className( "bsd-menu-desktop-cat-link")); found this initially, but did not give up and manage to find with css selector. yey!!!!!
+          chromeDriver.findElements(By.cssSelector("div[class='bsd-menu home'] div[class='container'] div[class='bsd-menu-desktop'] ul[class='bsd-menu-desktop-cat'] li div[class='bsd-open-subcat-content']"));
+
+
 
         for (WebElement webElement : listaProduse) {
           colorTheElementInRed(webElement);
@@ -86,14 +80,11 @@ public class CarmenTest {
       }
 
 
-     */
-//here wanted to color each item from the menu but did not manage to find selector, same for 3rd test
 
-/*
          @Test
          public void thirdTest() {
            List<WebElement> listaProduse =
-               chromeDriver.findElements(By.cssSelector("ul[class='bsd-menu-desktop-cat'] li[class='bsd-open-subcat-content']"));
+               chromeDriver.findElements(By.cssSelector("div[class='bsd-menu home'] div[class='container'] div[class='bsd-menu-desktop'] ul[class='bsd-menu-desktop-cat'] li div[class='bsd-open-subcat-content']"));
 
            for (WebElement webElement : listaProduse) {
              colorTheElementInRed(webElement);
@@ -104,17 +95,13 @@ public class CarmenTest {
              }
            }
 
-           WebElement pageTitle = chromeDriver.findElement(By.cssSelector("ul[class='bsd-menu-desktop-cat'] li[class='bsd-open-subcat-content']"));
+           WebElement pageTitle = chromeDriver.findElement(By.cssSelector("#whiteMenu > div > div > ul:nth-child(2) > li:nth-child(1) > div > a > span"));
            Assertions.assertTrue(pageTitle.isDisplayed());
-           Assertions.assertEquals("altele", pageTitle.getText());
+           Assertions.assertEquals("Flori de primăvară", pageTitle.getText());
+           //Assertions.assertEquals("Flori de primavara", pageTitle.getText());
 
          }
 
-
-
-
-
- */
 
 
     public void colorTheElementInRed(final WebElement webElement) {
