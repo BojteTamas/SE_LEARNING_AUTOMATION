@@ -29,22 +29,30 @@ public class MariaTest {
     @Test
     public void firstTest() {
 
-     WebElement loginButton =
-                chromeDriver.findElement(By.cssSelector("#w3loginbtn")); // asa gasim un element
-        //waitSomeTime(10);
+        WebElement popup = chromeDriver.findElement(
+               By.cssSelector("#accept-choices"));
+                 popup.click();
+
+         WebElement loginButton = chromeDriver.findElement(
+                        By.cssSelector("#w3loginbtn"));
         loginButton.click();
-//having issues by passing by cache & cookies
 
         waitSomeTime(2);
 
         WebElement emailInput =
-                chromeDriver.findElement(By.cssSelector("#user_login_email")); // asa gasim un element
-        emailInput.sendKeys("ceva@ceva.com");
+                chromeDriver.findElement(By.cssSelector("#modalusername")); // asa gasim un element
+        emailInput.sendKeys("maria_9267@yahoo.com");
+
+        waitSomeTime(2);
+
+        WebElement passwordInput =
+                chromeDriver.findElement(By.cssSelector("#current-password")); // asa gasim un element
+        passwordInput.sendKeys("Random123");
 
         waitSomeTime(2);
 
         WebElement continueButton =
-                chromeDriver.findElement(By.cssSelector("#user_login_continue")); // asa gasim un element
+                chromeDriver.findElement(By.cssSelector("#root > div > div > div:nth-child(4) > div.LoginModal_modal__1Yybs.LoginModal_show__F6L8A.LoginModal_full_page__PoJE0 > div > div.LoginModal_cta_bottom_box__wU1AF > div.LoginModal_cta_bottom_box_button_login__5Fbwv > button")); // asa gasim un element
         colorTheElementInRed(continueButton); // coloreaza
         waitSomeTime(2);
         continueButton.click();
@@ -54,8 +62,19 @@ public class MariaTest {
 
     @Test
     public void secondTest() {
+
+        WebElement popup = chromeDriver.findElement(
+                By.cssSelector("#accept-choices"));
+        popup.click();
+
+        WebElement tutorialButton = chromeDriver.findElement(
+                By.cssSelector("#navbtn_tutorials"));
+        tutorialButton.click();
+
+        waitSomeTime(10);
+
         List<WebElement> listaProduse =
-                chromeDriver.findElements(By.cssSelector("ul[class='megamenu-list'] li[data-id]"));
+                chromeDriver.findElements(By.cssSelector("h3[class='w3-margin-top']"));
 
         for (WebElement webElement : listaProduse) {
             colorTheElementInRed(webElement);
@@ -70,13 +89,23 @@ public class MariaTest {
 
     @Test
     public void thirdTest() {
+        WebElement popup = chromeDriver.findElement(
+                By.cssSelector("#accept-choices"));
+        popup.click();
+
+        WebElement tutorialButton = chromeDriver.findElement(
+                By.cssSelector("#navbtn_tutorials"));
+        tutorialButton.click();
+
+        waitSomeTime(5);
+
         List<WebElement> listaProduse =
-                chromeDriver.findElements(By.cssSelector("ul[class='megamenu-list'] li[data-id]"));
+                chromeDriver.findElements(By.cssSelector("h3[class='w3-margin-top']"));
 
         for (WebElement webElement : listaProduse) {
             colorTheElementInRed(webElement);
             waitSomeTime(1);
-            if (webElement.getText().equals("Fashion")) {
+            if (webElement.getText().equals("Web Building")) {
                 webElement.click();
                 break;
             }
